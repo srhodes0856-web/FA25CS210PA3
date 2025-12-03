@@ -117,9 +117,10 @@ void printPath(pair<int,int> exitcell,
 // STUDENTS IMPLEMENT DFS HERE
 // Add arguments, return type, and logic
 // ----------------------------------------------------------
-// bool dfs(……) {
-//     // Your code here
-// }
+bool dfs(int row, int col, const vector<vector<int>>& maze,vector<vector<bool>>& seen,vector<vector<int>>& prevR,vector<vector<int>>& prevC,int goalR, int goalC){
+    int totalR = maze.size();
+    int totalC = maze[0].size();
+}
 
 
 // ----------------------------------------------------------
