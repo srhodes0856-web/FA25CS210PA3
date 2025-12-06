@@ -120,6 +120,21 @@ void printPath(pair<int,int> exitcell,
 bool dfs(int row, int col, const vector<vector<int>>& maze,vector<vector<bool>>& seen,vector<vector<int>>& prevR,vector<vector<int>>& prevC,int goalR, int goalC){
     int totalR = maze.size();
     int totalC = maze[0].size();
+
+    if (row < 0 or row >= totalR or col < 0 or col >= totalC){
+        return false;
+    }
+    if (maze[row][col] == 1){
+        return false;
+    }
+    if (visited[row][col]){
+        return false;
+    }
+    visited[row][col] = true;
+    if (row == goalR and col == goalC){
+        return true;
+    }
+    return false;
 }
 
 
