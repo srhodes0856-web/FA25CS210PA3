@@ -137,10 +137,17 @@ bool dfs(int row, int col, const vector<vector<int>>& maze,vector<vector<bool>>&
     for (int k = 0; k < 4; k++) {
         int nextR = row + dr[k];
         int nextC = col + dc[k];
-        if (nextR >= 0 and nextR < totalR and nextC >= 0 and nextC < totalC) {
-            prevR[nextR][nextC] = row;
-            prevC[nextR][nextC] = col;
-        }
+
+        if (nextR < 0 || nextR >= totalR || nextC < 0 || nextC >= totalC)
+            continue;
+        if (maze[nextR][nextC] == 1)
+            continue;
+        if (seen[nextR][nextC])
+            continue;
+
+        prevR[nextR][nextC] = row;
+        prevC[nextR][nextC] = col;
+
         if (dfs(nextR, nextC, maze, seen, prevR, prevC, goalR, goalC))
             return true;
     }
@@ -186,17 +193,17 @@ int main() {
     // STUDENT WORK:
     // Call your DFS, track visited, and fill parent_r and parent_c
     // ------------------------------------------------------
-    // bool found = dfs(ent_r, ent_c, maze, visited, parent_r, parent_c, exit_r, exit_c);
+    bool found = dfs(ent_r, ent_c, maze, visited, parent_r, parent_c, exit_r, exit_c);
 
     // ------------------------------------------------------
     // STUDENT WORK:
     // If found, print the path
     // ------------------------------------------------------
-    // if (found) {
-    //     printPath(exitcell, parent_r, parent_c, ent_r, ent_c);
-    // } else {
-    //     cout << "\nNo path exists.\n";
-    // }
+    if (found) {
+         printPath(exitcell, parent_r, parent_c, ent_r, ent_c);
+    } else {
+         cout << "\nNo path exists.\n";
+    }
 
     return 0;
 }
