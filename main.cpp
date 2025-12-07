@@ -137,6 +137,12 @@ bool dfs(int row, int col, const vector<vector<int>>& maze,vector<vector<bool>>&
     for (int k = 0; k < 4; k++) {
         int nextR = row + dr[k];
         int nextC = col + dc[k];
+        if (nextR >= 0 and nextR < totalR and nextC >= 0 and nextC < totalC) {
+            prevR[nextR][nextC] = row;
+            prevC[nextR][nextC] = col;
+        }
+        if (dfs(nextR, nextC, maze, seen, prevR, prevC, goalR, goalC))
+            return true;
     }
 
     return false;
