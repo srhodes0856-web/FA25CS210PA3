@@ -127,13 +127,18 @@ bool dfs(int row, int col, const vector<vector<int>>& maze,vector<vector<bool>>&
     if (maze[row][col] == 1){
         return false;
     }
-    if (visited[row][col]){
+    if (seen[row][col]){
         return false;
     }
-    visited[row][col] = true;
+    seen[row][col] = true;
     if (row == goalR and col == goalC){
         return true;
     }
+    for (int k = 0; k < 4; k++) {
+        int nextR = row + dr[k];
+        int nextC = col + dc[k];
+    }
+
     return false;
 }
 
